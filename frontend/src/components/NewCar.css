@@ -1,0 +1,103 @@
+/* Basic layout styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* Centered heading */
+h1 {
+  color: #333;
+  margin-top: 50px;
+  font-size: 36px;
+  text-align: center;
+}
+
+/* Loading and error messages */
+.loading,
+.error {
+  color: #ff5722;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* Cars container */
+.car-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px;
+}
+
+/* Individual car card styling */
+.car-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 15px;
+  width: 280px;
+  transition: transform 0.3s;
+  text-align: center;
+}
+
+/* Hover effect on car cards */
+.car-card:hover {
+  transform: scale(1.05);
+}
+
+/* Styling for car details */
+.car-card h2 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.car-card p {
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.car-card strong {
+  color: #333;
+}
+
+/* Image styling */
+.car-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-top: 15px;
+}
+
+/* Styling for empty car list */
+.car-list p {
+  text-align: center;
+  font-size: 18px;
+  color: #777;
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .car-list {
+      justify-content: center;
+  }
+
+  .car-card {
+      width: 100%;
+      max-width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .car-card {
+      width: 100%;
+      max-width: 320px;
+  }
+
+  h1 {
+      font-size: 28px;
+  }
+}

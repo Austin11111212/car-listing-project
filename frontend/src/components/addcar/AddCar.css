@@ -1,0 +1,21 @@
+.add-car-form-container {
+  padding: 20px;
+  background-color: var(--background-color, #f8f9fa); /* Adjust for dark/light mode */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.add-car-form .form-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.submit-btn {
+  width: 100%;
+  max-width: 200px;
+}
+
+.back-to-listings-btn {
+  margin-bottom: 10px;
+}

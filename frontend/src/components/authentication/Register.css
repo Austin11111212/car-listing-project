@@ -1,0 +1,20 @@
+/* Style for the password input container to position the eye icon inside */
+.password-container {
+  position: relative;
+}
+
+/* Style for the eye icon inside the password input */
+.password-eye {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%); /* Vertically center the icon */
+  cursor: pointer;
+  font-size: 18px;
+  color: #007bff; /* Blue color */
+}
+
+/* Add custom styling to inputs if needed */
+input.form-control {
+  padding-right: 40px; /* Add space for the eye icon */
+}

@@ -1,0 +1,31 @@
+/* .actveBtn {
+    color: #fff;
+    background-color: #000;
+}
+.inactiveBtn {
+    color: #000;
+    background-color: #fff;
+} */
+
+/* BButton.css */
+
+/* Default button styles */
+.b-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .b-button:hover {
+    opacity: 0.8;
+  }
+  
+  .b-button:focus {
+    outline: none;
+  }
+  
