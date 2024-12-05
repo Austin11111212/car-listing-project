@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { FaSun, FaMoon } from 'react-icons/fa'; // Import icons
+// import { FaSun, FaMoon } from 'react-icons/fa'; // Import icons
 
 // Create the ThemeContext
 const ThemeContext = createContext();
