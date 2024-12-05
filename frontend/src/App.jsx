@@ -14,7 +14,7 @@ import PageNotFound from "./components/notfound/PageNotFound";
 import Login from "./components/authentication/Login";
 import Register from "./components/authentication/Register";
 import CarDetails from "./components/cardetails/CarDetails"; // Assuming CarDetails exists
-import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 // Theme Context
 import { useTheme } from "./components/contexts/ThemeContext";
