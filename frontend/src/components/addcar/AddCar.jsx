@@ -30,6 +30,9 @@ function AddCar() {
     }));
   };
 
+  const apiUrl = import.meta.env.VITE_API_URL
+
+
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,7 +53,7 @@ function AddCar() {
     const formData = { ...carData, pictures };
 
     try {
-      const response = await fetch("http://localhost:5001/api/cars", {
+      const response = await fetch(`${apiUrl}/api/auth/login/api/cars`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

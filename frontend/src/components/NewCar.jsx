@@ -6,15 +6,20 @@ const NewCar = () => {
     const [loading, setLoading] = useState(false);  // State for loading indicator
     const [error, setError] = useState('');  // State for handling errors
 
+
+
+
+
+    const apiUrl = import.meta.env.VITE_API_URL
+
     // Function to fetch cars from the backend API
     const fetchCar = async () => {
         setLoading(true);  // Start loading
         setError('');  // Reset any previous error
 
-        const url = "http://localhost:5001/api/cars";
 
         try {
-            const response = await fetch(url, {
+            const response = await fetch(`${apiUrl}/api/auth/login/api/cars`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",

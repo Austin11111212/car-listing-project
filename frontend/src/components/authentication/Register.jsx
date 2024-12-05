@@ -27,6 +27,8 @@ function Register() {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
+  const apiUrl = import.meta.env.VITE_API_URL
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -34,7 +36,7 @@ function Register() {
     setLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5001/api/auth/signup", {
+      const response = await fetch(`${apiUrl}/api/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

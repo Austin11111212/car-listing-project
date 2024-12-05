@@ -55,6 +55,7 @@ function Login() {
       password: "",
     });
   };
+  const apiUrl = import.meta.env.VITE_API_URL
 
   // handle form submit
   const handleSubmit = async (e) => {
@@ -62,7 +63,7 @@ function Login() {
     setProcessing(true); // Show the spinner when the form is submitted
 
     try {
-      const response = await fetch("http://localhost:5001/api/auth/login", {
+      const response = await fetch(`${apiUrl}/api/auth/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
