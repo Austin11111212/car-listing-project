@@ -75,8 +75,29 @@ function Navigationbar() {
               className="me-2"
               aria-label="Search"
             />
-            {/* <Button variant="outline-success">Search</Button> */}
-          </Form>
+    <button
+      type="button"
+      style={{
+        border: "1px solid #28a745", // Outline color for success
+        backgroundColor: "transparent", // Transparent background
+        color: "#28a745", // Text color for success
+        padding: "0.375rem 0.75rem", // Button padding
+        fontSize: "1rem", // Font size
+        borderRadius: "0.25rem", // Border radius
+        cursor: "pointer", // Cursor on hover
+        transition: "background-color 0.3s ease, color 0.3s ease", // Smooth transition
+      }}
+      onMouseEnter={(e) => {
+        e.target.style.backgroundColor = "#28a745"; // On hover, change background
+        e.target.style.color = "white"; // Change text color
+      }}
+      onMouseLeave={(e) => {
+        e.target.style.backgroundColor = "transparent"; // Reset background
+        e.target.style.color = "#28a745"; // Reset text color
+      }}
+    >
+      Search
+    </button>          </Form>
 
 
           {/* Display Greeting if User is Logged In */}
