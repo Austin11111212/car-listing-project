@@ -9,17 +9,22 @@ function CarDetails() {
   const [error, setError] = useState(null);
   const navigate = useNavigate(); // For navigation
 
+  // Fetch API URL from environment variables
+  const apiUrl = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     // Fetch car details from the API
     const fetchCarDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5001/api/cars/${id}`);
+        console.log("Fetching car details from: ", `${apiUrl}/api/cars/${id}`); // Debug log
+        const response = await fetch(`${apiUrl}/api/cars/${id}`);
         if (!response.ok) {
-          throw new Error("Car not found");
+          throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
         const data = await response.json();
         setCar(data);
       } catch (err) {
+        console.error("Error fetching car details: ", err); // Debug log
         setError(err.message);
       } finally {
         setLoading(false);
@@ -27,7 +32,7 @@ function CarDetails() {
     };
 
     fetchCarDetails();
-  }, [id]);
+  }, [id, apiUrl]);
 
   if (loading) {
     return <div className="text-center mt-5">Loading car details...</div>;
@@ -66,7 +71,7 @@ function CarDetails() {
             </Carousel>
           ) : (
             <img
-              src={car.pictures[0] || "https://via.placeholder.com/300x200"}
+              src={car.pictures?.[0] || "https://via.placeholder.com/300x200"}
               alt={`${car.make} ${car.model}`}
               className="img-fluid rounded"
             />
@@ -76,22 +81,22 @@ function CarDetails() {
         {/* Car Details Section */}
         <div className="col-md-6">
           <p>
-            <strong>Price:</strong> {car.price}
+            <strong>Price:</strong> {car.price || "N/A"}
           </p>
           <p>
-            <strong>Description:</strong> {car.description}
+            <strong>Description:</strong> {car.description || "N/A"}
           </p>
           <p>
-            <strong>Mileage:</strong> {car.mileage}
+            <strong>Mileage:</strong> {car.mileage || "N/A"}
           </p>
           <p>
-            <strong>Color:</strong> {car.color}
+            <strong>Color:</strong> {car.color || "N/A"}
           </p>
           <p>
-            <strong>Transmission:</strong> {car.transmission}
+            <strong>Transmission:</strong> {car.transmission || "N/A"}
           </p>
           <p>
-            <strong>Fuel Type:</strong> {car.fuelType}
+            <strong>Fuel Type:</strong> {car.fuelType || "N/A"}
           </p>
         </div>
       </div>

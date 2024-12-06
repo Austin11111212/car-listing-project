@@ -53,7 +53,7 @@ function AddCar() {
     const formData = { ...carData, pictures };
 
     try {
-      const response = await fetch(`${apiUrl}/api/auth/login/api/cars`, {
+      const response = await fetch(`${apiUrl}/api/cars`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

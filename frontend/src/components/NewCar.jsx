@@ -6,20 +6,15 @@ const NewCar = () => {
     const [loading, setLoading] = useState(false);  // State for loading indicator
     const [error, setError] = useState('');  // State for handling errors
 
-
-
-
-
-    const apiUrl = import.meta.env.VITE_API_URL
+    const apiUrl = import.meta.env.VITE_API_URL; // Base URL for API
 
     // Function to fetch cars from the backend API
     const fetchCar = async () => {
         setLoading(true);  // Start loading
         setError('');  // Reset any previous error
 
-
         try {
-            const response = await fetch(`${apiUrl}/api/auth/login/api/cars`, {
+            const response = await fetch(`${apiUrl}/api/cars`, { // Fixed the endpoint to /api/cars
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -72,7 +67,7 @@ const NewCar = () => {
 
                             {/* Image with a fallback */}
                             <img
-                                src={car.pictures || 'https://via.placeholder.com/300x200?text=No+Image+Available'}
+                                src={car.pictures?.[0] || 'https://via.placeholder.com/300x200?text=No+Image+Available'} // Assuming pictures is an array, showing the first image
                                 alt={`${car.make} ${car.model}`}
                                 className="car-image"
                             />

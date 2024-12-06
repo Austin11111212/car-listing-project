@@ -101,6 +101,8 @@ const Listing = () => {
   // navigate to other pages
   const navigate = useNavigate();
 
+  const apiUrl = import.meta.env.VITE_API_URL
+
   // state
   const [cars, setCars] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -108,7 +110,7 @@ const Listing = () => {
   // handle fetch cars from api
   const fetchCars = async () => {
     try {
-      const response = await fetch("http://localhost:5001/api/cars");
+      const response = await fetch(`${apiUrl}/api/cars`);
       const data = await response.json();
 
       setCars(data);
