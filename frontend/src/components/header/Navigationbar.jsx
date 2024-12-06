@@ -1,4 +1,6 @@
 import { useTheme } from "../contexts/ThemeContext"; // Import the custom hook
+import { FaSun, FaMoon } from "react-icons/fa"; // Import icons for light and dark mode
+// import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
@@ -75,16 +77,16 @@ function Navigationbar() {
             />
             {/* <Button variant="outline-success">Search</Button> */}
           </Form>
-          
-              
-            {/* Display Greeting if User is Logged In */}
-            {isLoggedIn && userName && (
-              <div className="mx-3 text-light">
-                             <p style={{ color: isDarkMode ? 'white' : 'black' }}>
-                  Hello, {userName}!
-                </p>
-              </div>
-            )}
+
+
+          {/* Display Greeting if User is Logged In */}
+          {isLoggedIn && userName && (
+            <div className="mx-3 text-light">
+              <p style={{ color: isDarkMode ? 'white' : 'black' }}>
+                Hello, {userName}!
+              </p>
+            </div>
+          )}
 
 
           {/* Theme Toggle Button with icons */}
@@ -107,6 +109,27 @@ function Navigationbar() {
               <FaMoon size={24} color="white" /> // Moon icon for dark mode
             )}
           </Button> */}
+          <button
+            onClick={toggleTheme}
+            className="ms-3 d-flex align-items-center"
+            style={{
+              border: "none",
+              background: "transparent",
+              cursor: "pointer",
+              fontSize: "20px",
+              color: isDarkMode ? "white" : "black", // Dynamically change color
+              transition: "color 0.3s ease",
+              display: "flex", // Ensures alignment of the icon and text
+              alignItems: "center",
+            }}
+          >
+            {isDarkMode ? (
+              <FaSun size={24} color="yellow" /> // Sun icon for light mode
+            ) : (
+              <FaMoon size={24} color="white" /> // Moon icon for dark mode
+            )}
+          </button>
+
 
         </Navbar.Collapse>
 
