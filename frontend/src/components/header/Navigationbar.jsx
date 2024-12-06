@@ -1,6 +1,6 @@
 import { useTheme } from "../contexts/ThemeContext"; // Import the custom hook
 import { FaSun, FaMoon } from "react-icons/fa"; // Import icons for light and dark mode
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
@@ -75,7 +75,7 @@ function Navigationbar() {
               className="me-2"
               aria-label="Search"
             />
-            <Button variant="outline-success">Search</Button>
+            {/* <Button variant="outline-success">Search</Button> */}
           </Form>
           
               
@@ -90,7 +90,7 @@ function Navigationbar() {
 
 
           {/* Theme Toggle Button with icons */}
-          <Button
+          {/* <Button
             variant="outline-light"
             onClick={toggleTheme}
             className="ms-3 d-flex align-items-center"
@@ -108,7 +108,7 @@ function Navigationbar() {
             ) : (
               <FaMoon size={24} color="white" /> // Moon icon for dark mode
             )}
-          </Button>
+          </Button> */}
 
         </Navbar.Collapse>
 
