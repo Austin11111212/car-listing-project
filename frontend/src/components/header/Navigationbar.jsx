@@ -97,7 +97,8 @@ function Navigationbar() {
       }}
     >
       Search
-    </button>          </Form>
+    </button>       
+       </Form>
 
 
           {/* Display Greeting if User is Logged In */}

@@ -14,7 +14,7 @@ function Login() {
       top: "70%",
       transform: "translateY(-50%)",
       cursor: "pointer",
-      fontSize: "20px", // You can adjust the size of the icon
+      fontSize: "20px", // Adjust size of the icon
     },
     spinnerContainer: {
       display: "flex",
@@ -31,12 +31,11 @@ function Login() {
     email: "",
     password: "",
   });
-  const [processing, setProcessing] = useState(false); // to manage spinner state
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // track login state
-  const [username, setUsername] = useState(""); // track username for greeting
+  const [processing, setProcessing] = useState(false); // Manage spinner state
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login state
+  const [username, setUsername] = useState(""); // Track username for greeting
 
-  // Check if the user is already logged in by checking localStorage for token
- 
+  const apiUrl = import.meta.env.VITE_API_URL;
 
   // toggle password visibility
   const toggleShow = () => {
@@ -55,7 +54,6 @@ function Login() {
       password: "",
     });
   };
-  const apiUrl = import.meta.env.VITE_API_URL
 
   // handle form submit
   const handleSubmit = async (e) => {
@@ -74,13 +72,12 @@ function Login() {
       if (response.ok) {
         const data = await response.json();
         setProcessing(false); // Hide the spinner after receiving the response
-        // save token and username to local storage
- 
-     
+
+        // Save token and username to local storage
         localStorage.setItem("token", data.authToken);
-        localStorage.setItem("userName", data.user.userName); // Assuming the response contains user info
+        localStorage.setItem("userName", data.user.userName); // Assuming response contains user info
         setIsLoggedIn(true); // Set login state to true
-        // setUsername(data.user.username); // Set username for greeting
+        setUsername(data.user.userName); // Set username for greeting
 
         console.log(data);
         alert("Login successful");
@@ -88,28 +85,21 @@ function Login() {
 
         // navigate to listing page after successful login
         navigate("/listing");
+      } else {
+        setProcessing(false); // Hide spinner if login fails
+        alert("Login failed, please check your credentials.");
       }
     } catch (error) {
       console.error(error);
-      setProcessing(false); // Hide the spinner in case of error
+      setProcessing(false); // Hide spinner if an error occurs
+      alert("An error occurred. Please try again.");
     }
-
   };
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   const user = localStorage.getItem("user");
-  //   console.log("stored  ", user);
-  //   if (token) {
-  //     setIsLoggedIn(true); // Set login state to true if token exists
-  //     // setUsername(storedUsername); // Set username for greeting
-  //   }
-  // }, []);
 
   // handle logout
   const handleLogout = () => {
     localStorage.removeItem("token"); // Remove token from local storage
-    localStorage.removeItem("username"); // Remove username from local storage
+    localStorage.removeItem("userName"); // Remove username from local storage
     setIsLoggedIn(false); // Set login state to false
     setUsername(""); // Clear username
     navigate("/login"); // Redirect to login page
@@ -119,10 +109,8 @@ function Login() {
     <div className="container my-5">
       <h1 className="mb-5 text-danger">Welcome! Login</h1>
 
-      {/* Greeting message
-      {isLoggedIn && username && (
-      //   // <h2>Hello, Welcome {username}!</h2> */}
-   
+      {/* Greeting message */}
+      {isLoggedIn && username && <h2>Hello, Welcome {username}!</h2>}
 
       <Form onSubmit={handleSubmit}>
         {/* Email Address */}
@@ -134,6 +122,7 @@ function Login() {
             value={formData.email}
             onChange={handleFormDataChange}
             disabled={processing || isLoggedIn} // Disable input if logged in
+            required
           />
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
@@ -149,6 +138,7 @@ function Login() {
             value={formData.password}
             onChange={handleFormDataChange}
             disabled={processing || isLoggedIn} // Disable input if logged in
+            required
           />
           <div style={styles.eyeIcon} onClick={toggleShow}>
             {/* Eye icon to show/hide password */}
