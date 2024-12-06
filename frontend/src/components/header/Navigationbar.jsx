@@ -87,13 +87,7 @@ function Navigationbar() {
                 </p>
               </div>
             )}
-
-
-          
-
-
-
-
+            
 
           {/* Theme Toggle Button with icons */}
           <Button
